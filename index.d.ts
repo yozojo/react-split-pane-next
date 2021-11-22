@@ -50,7 +50,7 @@ declare class SplitPane extends React.Component<Props, State> {
   static defaultProps: Props;
 }
 
-export interface Pane {
+interface PProps {
   split?: 'vertical' | 'horizontal';
   initialSize?: Size;
   minSize?: Size;
@@ -58,4 +58,8 @@ export interface Pane {
   resizersSize?: Size;
 }
 
-export { SplitPane as default };
+declare class Pane extends React.PureComponent<PProps> {
+  constructor();
+}
+
+export { SplitPane as default, Pane };
