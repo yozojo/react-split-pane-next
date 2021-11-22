@@ -33,26 +33,17 @@
     "build": "rollup -c",
     "build:watch": "rollup -c --watch",
     "clean": "rimraf dist",
-    "test": "BABEL_ENV=test mochify -R spec --transform babelify",
-    "test:watch": "BABEL_ENV=test mochify -R spec --watch --transform babelify",
-    "test:coverage": "BABEL_ENV=test mochify --plugin [ mochify-istanbul --exclude '**/test/**' --report lcovonly ] --transform babelify && cat lcov.info | coveralls && rm lcov.info",
     "prettier": "prettier --write '{src,test}/**/*.js'",
     "lint": "eslint src test",
     "release": "standard-version",
     "build:storybook": "build-storybook -o build",
     "storybook": "start-storybook -p ${PORT:-3001} -h 0.0.0.0",
-    "deploy": "gh-pages -d build",
-    "prepublishOnly": "yarn run test && yarn run build"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "inline-style-prefixer": "^6.0.1",
+    "inline-style-prefixer": "^4.0.0",
     "prop-types": "^15.7.2",
-    "styled-components": "^5.3.3"
+    "styled-components": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
