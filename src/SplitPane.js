@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Resizer from './Resizer';
 import Pane from './Pane';
+import { getUnit, convertToUnit, convert } from './utils';
 
 const DEFAULT_PANE_SIZE = '1';
 const DEFAULT_PANE_MIN_SIZE = '0';
@@ -29,69 +30,9 @@ const RowStyle = styled.div`
   user-select: text;
 `;
 
-function convert(str, size) {
-  const tokens = str.match(/([0-9]+)([px|%]*)/);
-  const value = tokens[1];
-  const unit = tokens[2];
-  return toPx(value, unit, size);
-}
-
-function toPx(value, unit = 'px', size) {
-  switch (unit) {
-    case '%': {
-      return +((size * value) / 100).toFixed(2);
-    }
-    default: {
-      return +value;
-    }
-  }
-}
-
 function removeNullChildren(children) {
   return React.Children.toArray(children).filter((c) => c);
 }
-
-export function getUnit(size) {
-  if (size.endsWith('px')) {
-    return 'px';
-  }
-
-  if (size.endsWith('%')) {
-    return '%';
-  }
-
-  return 'ratio';
-}
-
-export function convertSizeToCssValue(value, resizersSize) {
-  if (getUnit(value) !== '%') {
-    return value;
-  }
-
-  if (!resizersSize) {
-    return value;
-  }
-
-  const idx = value.search('%');
-  const percent = value.slice(0, idx) / 100;
-  if (percent === 0) {
-    return value;
-  }
-
-  return `calc(${value} - ${resizersSize}px*${percent})`;
-}
-
-function convertToUnit(size, unit, containerSize) {
-  switch (unit) {
-    case '%':
-      return `${((size / containerSize) * 100).toFixed(2)}%`;
-    case 'px':
-      return `${size.toFixed(2)}px`;
-    case 'ratio':
-      return (size * 100).toFixed(0);
-  }
-}
-
 class SplitPane extends Component {
   constructor(props) {
     super(props);
@@ -101,7 +42,7 @@ class SplitPane extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({ sizes: this.getPanePropSize(nextProps) });
   }
 
@@ -132,7 +73,7 @@ class SplitPane extends Component {
   };
 
   onDown = (resizerIndex, clientX, clientY) => {
-    const { allowResize, onResizeStart, split } = this.props;
+    const { allowResize, onResizeStart } = this.props;
 
     if (!allowResize) {
       return;
@@ -361,7 +302,7 @@ class SplitPane extends Component {
   }
 
   render() {
-    const { children, className, split } = this.props;
+    const { className, split } = this.props;
     const notNullChildren = removeNullChildren(this.props.children);
     const sizes = this.getSizes();
     const resizersSize = this.getResizersSize(notNullChildren);

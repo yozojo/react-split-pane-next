@@ -9,7 +9,7 @@
     "dist",
     "index.d.ts"
   ],
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/yozojo/react-split-pane-next"
@@ -28,7 +28,7 @@
     "es6"
   ],
   "scripts": {
-    "start": "parcel website/index.html",
+    "start": "parcel build/index.html",
     "prebuild": "yarn run clean",
     "build": "rollup -c",
     "build:watch": "rollup -c --watch",
@@ -41,17 +41,17 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
-    "inline-style-prefixer": "^4.0.0",
-    "prop-types": "^15.7.2",
-    "styled-components": "^2.4.0"
+    "inline-style-prefixer": "^6.0.1",
+    "prop-types": "^15.8.1",
+    "styled-components": "^5.3.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/plugin-transform-modules-commonjs": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
-    "@emotion/core": "^10.0.22",
-    "@emotion/styled": "^10.0.23",
     "@storybook/addons": "^5.3.17",
     "@storybook/react": "^5.3.17",
     "@storybook/theming": "^5.3.17",
@@ -80,18 +80,11 @@
     "parcel-bundler": "^1.12.4",
     "prettier": "2.0.5",
     "pretty-quick": "^2.0.1",
-    "react": ">=15",
-    "react-dom": "^16.0.0-0",
-    "react-router-dom": "^5.1.2",
     "rimraf": "^3.0.0",
     "rollup": "^2.3.4",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "standard-version": "^7.0.0"
-  },
-  "peerDependencies": {
-    "react": "^16.0.0-0",
-    "react-dom": "^16.0.0-0"
   }
 }

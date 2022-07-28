@@ -24,10 +24,7 @@ export default {
       exports: 'named',
     },
   ],
-  external: [
-    ...Object.keys(pkg.dependencies),
-    ...Object.keys(pkg.peerDependencies),
-  ],
+  external: [...Object.keys(pkg.dependencies)],
   plugins: [
     babel({
       exclude: 'node_modules/**',

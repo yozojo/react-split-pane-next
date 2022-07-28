@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import prefixAll from 'inline-style-prefixer/static';
-
-import { getUnit, convertSizeToCssValue } from './SplitPane';
+import { getUnit, convertSizeToCssValue } from './utils';
 
 function PaneStyle({
   split,
