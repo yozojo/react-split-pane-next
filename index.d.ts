@@ -25,6 +25,7 @@ export interface Props {
   pane2Style?: React.CSSProperties;
   resizerClassName?: string;
   step?: number;
+  children: React.ReactElement[];
 }
 
 export interface State {
@@ -59,6 +60,7 @@ export interface PaneProps {
   innerRef?: any;
   index?: number;
   className?: string;
+  children: React.ReactElement[];
 }
 
 declare class Pane extends React.PureComponent<PaneProps> {
