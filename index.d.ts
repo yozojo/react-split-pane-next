@@ -4,6 +4,7 @@ import * as React from 'react';
 export type Size = string | number;
 
 export interface Props {
+  children?: React.ReactNode;
   allowResize?: boolean;
   className?: string;
   primary?: 'first' | 'second';
@@ -51,6 +52,7 @@ declare class SplitPane extends React.Component<Props, State> {
 }
 
 export interface PaneProps {
+  children?: React.ReactNode;
   split?: 'vertical' | 'horizontal';
   initialSize?: Size;
   minSize?: Size;
