@@ -8,8 +8,8 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   background-clip: padding-box;
   margin: 2px;
-    .hideResizer: {
-      display: none;
+  .hideResizer: {
+    display: none;
   }
   :hover {
     opacity: 0.1;
