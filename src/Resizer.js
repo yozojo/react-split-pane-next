@@ -3,13 +3,16 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   background: #000;
-  opacity: 0.2;
+  opacity: 0;
   z-index: 1;
   box-sizing: border-box;
   background-clip: padding-box;
-
+  margin: 2px;
+  .hideResizer: {
+    display: none;
+  }
   :hover {
-    transition: all 2s ease;
+    opacity: 0.1;
   }
 `;
 
